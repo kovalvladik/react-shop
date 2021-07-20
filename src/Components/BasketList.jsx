@@ -32,8 +32,18 @@ const useStyles = makeStyles({
 
 });
 
+
+
 function BasketList(props) {
-    const {order=[],handleBasketShow= Function.prototype} = props;
+
+    const {order=[],handleBasketShow= Function.prototype,
+        removeFromBasket = Function.prototype,
+        removeElement = Function.prototype,
+        addElement = Function.prototype} = props;
+
+    const totalPrice = order.reduce((sum,el)=>{
+        return sum + el.price * el.quantity
+    },0)
 
     const classes = useStyles();
 
@@ -44,16 +54,18 @@ function BasketList(props) {
                     <Button className={classes.button}>
                         <CancelIcon  fontSize='medium'  onClick={handleBasketShow}/>
                     </Button>
-
                     <Typography align='center'> Basket</Typography>
                 </List>
                 {
                     order.length ?( order.map(item =>
-                        <BasketItem key={item.id} {...item} />
+                        <BasketItem key={item.id} {...item}
+                                    removeFromBasket={removeFromBasket}
+                                    removeElement={removeElement}
+                                    addElement={addElement}/>
                     )):(<List> nothing here </List>)
                 }
                 <List>
-                    <Typography align='center'> Full Price</Typography>
+                    <Typography align='center'> Full Price : {totalPrice}</Typography>
                 </List>
             </List>
 

@@ -34,8 +34,42 @@ function Shop(){
         }
     }
 
+    const removeFromBasket = (itemId) => {
+            const newOrder = order.filter((el)=> el.id !== itemId)
+        setOrder(newOrder)
+    }
+
     const handleBasketShow= ( ) =>{
         setBasketShow(!basketShow)
+    }
+
+    const addElement = (itemId) =>{
+        const newOrder = order.map((el)=>{
+            if (el.id === itemId) {
+                const newQantity = el.quantity++;
+                return{
+                    ...el,
+                    newQantity
+                }
+            }else{
+                return el
+            }
+        })
+        setOrder(newOrder)
+    }
+    const removeElement = (itemId) =>{
+        const newOrder = order.map((el)=>{
+            if (el.id === itemId) {
+                const newQantity = el.quantity--;
+                return{
+                    ...el,
+                    newQantity
+                }
+            }else{
+                return el
+            }
+        })
+        setOrder(newOrder)
     }
 
 
@@ -59,7 +93,12 @@ function Shop(){
             loading ? <Preloader/> : <ItemsList items={items} addToBasket={addToBasket}/>
         }
         {
-            basketShow &&<BasketList order={order} handleBasketShow={handleBasketShow}/>
+            basketShow &&<BasketList order={order}
+                                     handleBasketShow={handleBasketShow}
+                                     addElement={addElement}
+                                     removeFromBasket={removeFromBasket}
+                                     removeElement={removeElement}
+            />
         }
     </main>
 }

@@ -87,7 +87,7 @@ function Item(props){
                 />
                 <CardMedia
                     className={classes.media}
-                    image={full_background}
+                    image={image}
 
                     // title={name}
                 />

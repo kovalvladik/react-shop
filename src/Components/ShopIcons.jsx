@@ -27,5 +27,6 @@ function ShopIcons( props){
             {quantity ? <span>{quantity}</span> : null}
         </IconButton>
     </div>
+
 }
 export {ShopIcons}
