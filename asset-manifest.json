@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/https//kovalvladik.github.io/react-shop/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/https//kovalvladik.github.io/react-shop/static/js/main.1f155ab9.chunk.js",
+    "main.js.map": "/https//kovalvladik.github.io/react-shop/static/js/main.1f155ab9.chunk.js.map",
+    "runtime-main.js": "/https//kovalvladik.github.io/react-shop/static/js/runtime-main.687fd118.js",
+    "runtime-main.js.map": "/https//kovalvladik.github.io/react-shop/static/js/runtime-main.687fd118.js.map",
+    "static/js/2.4b1dc9d3.chunk.js": "/https//kovalvladik.github.io/react-shop/static/js/2.4b1dc9d3.chunk.js",
+    "static/js/2.4b1dc9d3.chunk.js.map": "/https//kovalvladik.github.io/react-shop/static/js/2.4b1dc9d3.chunk.js.map",
+    "index.html": "/https//kovalvladik.github.io/react-shop/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/https//kovalvladik.github.io/react-shop/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.4b1dc9d3.chunk.js.LICENSE.txt": "/https//kovalvladik.github.io/react-shop/static/js/2.4b1dc9d3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.687fd118.js",
+    "static/js/2.4b1dc9d3.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.1f155ab9.chunk.js"
+  ]
+}
