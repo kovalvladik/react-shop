@@ -11,7 +11,7 @@ function ItemsList(props){
         root: {
             flexGrow: 1,
             marginTop:'20px',
-            marginLeft:'25px'
+            marginLeft:'3px'
         },
     }))
     const classes = useStyles();
