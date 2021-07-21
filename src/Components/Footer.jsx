@@ -13,6 +13,11 @@
           marginTop:'20px',
 
       },
+      icons:{
+        position:'relative',
+          left:'49%'
+
+      }
 
   }))
 
@@ -20,8 +25,8 @@
       const classes = useStyles()
       return (
           <div   className={classes.root}>
-              <IconButton   href='https://tlgg.ru/vladohk' >
-                  <TelegramIcon   />
+              <IconButton   href='https://tlgg.ru/vladohk'  className={classes.icons} >
+                  <TelegramIcon  />
               </IconButton>
               <Container   component='main' maxWidth="md">
 

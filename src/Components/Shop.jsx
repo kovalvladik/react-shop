@@ -4,12 +4,14 @@ import Preloader from "./Preloader";
 import {ItemsList} from "./ItemsList";
 import {ShopIcons} from "./ShopIcons";
 import {BasketList} from "./BasketList";
+import {ColorAlert} from "./Alert";
 
 function Shop(){
     const [items,setItems]=useState([])
     const [loading, setLoading]= useState(true)
     const [order, setOrder]= useState([])
     const [basketShow, setBasketShow]= useState(false)
+    const [alertName,setAlertName ] = useState('')
 
     const addToBasket =(good)=> {
         const goodIndex = order.findIndex((orderGood) => orderGood.id === good.id)
@@ -32,6 +34,7 @@ function Shop(){
             })
             setOrder(newOrder)
         }
+        setAlertName(good.name)
     }
 
     const removeFromBasket = (itemId) => {
@@ -46,10 +49,10 @@ function Shop(){
     const addElement = (itemId) =>{
         const newOrder = order.map((el)=>{
             if (el.id === itemId) {
-                const newQantity = el.quantity++;
+                const newQantity = el.quantity + 1;
                 return{
                     ...el,
-                    newQantity
+                    quantity:newQantity
                 }
             }else{
                 return el
@@ -57,19 +60,24 @@ function Shop(){
         })
         setOrder(newOrder)
     }
+
     const removeElement = (itemId) =>{
         const newOrder = order.map((el)=>{
             if (el.id === itemId) {
-                const newQantity = el.quantity--;
+                const newQantity = el.quantity - 1;
                 return{
                     ...el,
-                    newQantity
+                    quantity : newQantity >= 0 ? newQantity : 0,
                 }
             }else{
                 return el
             }
         })
         setOrder(newOrder)
+    }
+
+    const closeAlert = () =>{
+        setAlertName('')
     }
 
 
@@ -87,7 +95,7 @@ function Shop(){
     )
 
 
-    return<main className='container content'>
+    return<main>
         <ShopIcons quantity={order.length} handleBasketShow={handleBasketShow} />
         {
             loading ? <Preloader/> : <ItemsList items={items} addToBasket={addToBasket}/>
@@ -99,6 +107,9 @@ function Shop(){
                                      removeFromBasket={removeFromBasket}
                                      removeElement={removeElement}
             />
+        }
+        {
+            alertName && <ColorAlert name={alertName} closeAlert={closeAlert}/>
         }
     </main>
 }
