@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
 import {useEffect} from "react";
+import {useContext} from "react";
+import {ShopContext} from "../context";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -14,9 +16,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function ColorAlert (props){
+function ColorAlert (){
     const classes = useStyles();
-    const {name = '', closeAlert = Function.prototype} = props
+    const {alertName:name = '', closeAlert = Function.prototype} = useContext(ShopContext)
 
     useEffect(()=>{
         const timerId = setTimeout(closeAlert,3000)

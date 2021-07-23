@@ -2,10 +2,12 @@ import React from 'react';
 import {Item} from "./Item";
 import {Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import {useContext} from "react";
+import {ShopContext} from "../context";
 
 
-function ItemsList(props){
-    const {items = [], addToBasket = Function.prototype}= props
+function ItemsList(){
+    const {items = []}= useContext(ShopContext)
 
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -23,7 +25,7 @@ function ItemsList(props){
 
             {items.map(good =>(
                 <Grid  item xs={12} sm={6} md={4} lg={3} >
-                <Item key={good.id} {...good} addToBasket={addToBasket}/>
+                <Item key={good.id} {...good} />
                 </Grid>
             ))}
 

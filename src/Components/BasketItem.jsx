@@ -13,8 +13,10 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+import {useContext} from "react";
+import {ShopContext} from "../context";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     root:{
         position:'absolute',
         cursor:'pointer',
@@ -29,22 +31,21 @@ const useStyles = makeStyles((theme) => ({
         right:'5rem',
 
     },
-    deleteButtom:{
+    deleteButton:{
         position:'absolute',
         cursor:'pointer',
         top:'4.4rem',
         right:'0.5rem',
     }
-}))
+})
 
 
 
 function BasketItem(props){
 
-    const {id,name, price,quantity,description,
-        removeFromBasket = Function.prototype,
-        removeElement = Function.prototype,
-        addElement = Function.prototype} = props
+    const {id,name, price,quantity} = props
+
+    const {removeFromBasket,removeElement,addElement}= useContext(ShopContext)
 
     const classes = useStyles();
 
@@ -80,7 +81,7 @@ function BasketItem(props){
                             <AddIcon fontSize="small" />
                         </Button>
                     </ButtonGroup>
-            <IconButton aria-label="delete" className={classes.deleteButtom}>
+            <IconButton aria-label="delete" className={classes.deleteButton}>
                 <DeleteIcon onClick={()=>removeFromBasket(id)}/>
             </IconButton>
         </AccordionDetails>

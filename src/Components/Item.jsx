@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {Button} from "@material-ui/core";
+import {useContext} from 'react';
+import {ShopContext} from "../context";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -59,9 +61,10 @@ function Item(props){
         rarity,
         image,
         icon,
-        addToBasket= Function.prototype
 
     }= props
+
+    const {addToBasket}= useContext(ShopContext)
 
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
