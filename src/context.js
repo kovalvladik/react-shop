@@ -9,6 +9,7 @@ const initialState ={
     order: [],
     basketShow: false,
     alertName: '',
+    buttonShow: true,
 }
 
 export const ContextProvider = ({children}) => {
@@ -34,6 +35,9 @@ export const ContextProvider = ({children}) => {
     }
     value.getItem = (data) => {
          dispach({type:'GET_ITEM', payload:data})
+    }
+    value.transformButton = (itemId) =>{
+         dispach({type:'TRANSFORM_BUTTON',payload:{ id:itemId}})
     }
 
     return (<ShopContext.Provider value={value} > {children}</ShopContext.Provider>)

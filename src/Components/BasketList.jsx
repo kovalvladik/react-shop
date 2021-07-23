@@ -14,7 +14,7 @@ const useStyles = makeStyles({
         width: '100%',
         position: 'fixed',
         backgroundColor:'#e1f5fe',
-        top: '30%',
+        top: '20%',
         boxShadow:'initial',
         borderBlock:'20px',
         borderBlockColor:'black',

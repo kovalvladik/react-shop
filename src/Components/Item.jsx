@@ -15,6 +15,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {Button} from "@material-ui/core";
 import {useContext} from 'react';
 import {ShopContext} from "../context";
+import RemoveIcon from "@material-ui/icons/Remove";
+import AddIcon from "@material-ui/icons/Add";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import {TransformButton} from "./TransformButton";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -47,6 +51,12 @@ const useStyles = makeStyles((theme) => ({
         borderStyle:3,
 
 },
+    button: {
+        position:'absolute',
+        cursor:'pointer',
+
+
+    },
 
 }));
 
@@ -62,44 +72,47 @@ function Item(props){
         image,
         icon,
 
+
     }= props
 
-    const {addToBasket}= useContext(ShopContext)
+    const {addToBasket ,order=[],removeElement, addElement,transformButton,buttonShow}= useContext(ShopContext)
 
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
+    function wrapperFunction () {
+        addToBasket({id,name,price})
+        transformButton(id)
+        return <TransformButton/>
+    }
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
+
+
     };
 
         return (
-            <Card id={id} className={classes.root}>
+            <Card  className={classes.root}>
                 <CardHeader
                     avatar={
                         <Avatar src={icon} aria-label="recipe" >
                         </Avatar>
                     }
-                    // action={
-                    //     <IconButton aria-label="settings">  //settings button
-                    //         <MoreVertIcon />
-                    //     </IconButton>
-                    // }
                     title={name}
                     subheader={rarity}
                 />
                 <CardMedia
                     className={classes.media}
-                    image={image}
-
-                    // title={name}
+                    image={full_background}
                 />
                 <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
-                        <FavoriteIcon  />
-                    </IconButton>
-                    <Button className={classes.buttonStyles}  onClick={()=>addToBasket({id,name,price})}>Buy</Button>
-                    <span> Price: {price} $</span>
+
+                    {buttonShow ? <Button className={classes.buttonStyles}
+                                          onClick={wrapperFunction}>Buy</Button>
+                    :   <TransformButton/>
+                    }
+
+
                     <IconButton
                         className={clsx(classes.expand, {
                             [classes.expandOpen]: expanded,

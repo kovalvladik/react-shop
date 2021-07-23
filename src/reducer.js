@@ -1,6 +1,27 @@
 
 export function reducer (state,{type,payload}){
     switch (type){
+        case 'TRANSFORM_BUTTON':
+        return {
+            ...state,
+            order: state.order.map((el)=> {
+                if (el.id === payload.id) {
+                    if (el.quantity > 0 ){
+                        return {
+                            ...el,
+                            buttonShow: false
+                        }
+                    } else {
+                        return el
+                    }
+
+                } else {
+                    return el
+                }
+            })
+
+
+        }
         case 'GET_ITEM':
             return {
                 ...state,
