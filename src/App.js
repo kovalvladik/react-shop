@@ -4,16 +4,15 @@ import {Shop} from "./Components/Shop";
 import {ContextProvider} from "./context";
 
 function App() {
-  return (
-    <div className="App">
-        <Header/>
-        <ContextProvider>
-            <Shop/>
-        </ContextProvider>
-
-        <Footer/>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Header/>
+            <ContextProvider>
+                <Shop/>
+            </ContextProvider>
+            <Footer/>
+        </div>
+    );
 }
 
 export default App;

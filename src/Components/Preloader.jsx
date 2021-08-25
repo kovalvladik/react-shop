@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles((theme) => ({
@@ -16,8 +16,8 @@ export default function Preloader() {
 
     return (
         <div className={classes.root}>
-            <LinearProgress />
-            <LinearProgress color="secondary" />
+            <LinearProgress/>
+            <LinearProgress color="secondary"/>
         </div>
     );
 }

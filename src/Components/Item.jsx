@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: '100%', // 16:9
 
 
-
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -43,15 +42,15 @@ const useStyles = makeStyles((theme) => ({
     // avatar: {
     //     backgroundColor: red[500],
     // },
-    buttonStyles:{
-        borderStyle:3,
+    buttonStyles: {
+        borderStyle: 3,
 
-},
+    },
 
 }));
 
 
-function Item(props){
+function Item(props) {
     const {
         id,
         name,
@@ -62,9 +61,9 @@ function Item(props){
         image,
         icon,
 
-    }= props
+    } = props
 
-    const {addToBasket}= useContext(ShopContext)
+    const {addToBasket} = useContext(ShopContext)
 
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
@@ -73,53 +72,54 @@ function Item(props){
         setExpanded(!expanded);
     };
 
-        return (
-            <Card id={id} className={classes.root}>
-                <CardHeader
-                    avatar={
-                        <Avatar src={icon} aria-label="recipe" >
-                        </Avatar>
-                    }
-                    // action={
-                    //     <IconButton aria-label="settings">  //settings button
-                    //         <MoreVertIcon />
-                    //     </IconButton>
-                    // }
-                    title={name}
-                    subheader={rarity}
-                />
-                <CardMedia
-                    className={classes.media}
-                    image={image}
+    return (
+        <Card id={id} className={classes.root}>
+            <CardHeader
+                avatar={
+                    <Avatar src={icon} aria-label="recipe">
+                    </Avatar>
+                }
+                // action={
+                //     <IconButton aria-label="settings">  //settings button
+                //         <MoreVertIcon />
+                //     </IconButton>
+                // }
+                title={name}
+                subheader={rarity}
+            />
+            <CardMedia
+                className={classes.media}
+                image={image}
 
-                    // title={name}
-                />
-                <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
-                        <FavoriteIcon  />
-                    </IconButton>
-                    <Button className={classes.buttonStyles}  onClick={()=>addToBasket({id,name,price})}>Buy</Button>
-                    <span> Price: {price} $</span>
-                    <IconButton
-                        className={clsx(classes.expand, {
-                            [classes.expandOpen]: expanded,
-                        })}
-                        onClick={handleExpandClick}
-                        aria-expanded={expanded}
-                        aria-label="show more"
-                    >
-                        <ExpandMoreIcon />
-                    </IconButton>
-                </CardActions>
-                <Collapse in={expanded} timeout="auto" unmountOnExit>
-                    <CardContent>
-                        <Typography paragraph>
-                            {description}
-                        </Typography>
-                    </CardContent>
-                </Collapse>
-            </Card>
-        );
+                // title={name}
+            />
+            <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                    <FavoriteIcon/>
+                </IconButton>
+                <Button className={classes.buttonStyles} onClick={() => addToBasket({id, name, price})}>Buy</Button>
+                <span> Price: {price} $</span>
+                <IconButton
+                    className={clsx(classes.expand, {
+                        [classes.expandOpen]: expanded,
+                    })}
+                    onClick={handleExpandClick}
+                    aria-expanded={expanded}
+                    aria-label="show more"
+                >
+                    <ExpandMoreIcon/>
+                </IconButton>
+            </CardActions>
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                    <Typography paragraph>
+                        {description}
+                    </Typography>
+                </CardContent>
+            </Collapse>
+        </Card>
+    );
 
 }
+
 export {Item}
